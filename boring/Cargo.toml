@@ -1,6 +1,6 @@
 [package]
 name = "tls_wrap_boring"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["cuti <cuti0738@gmail.com>"]
 description = "Library written in Rust, compatible with boringssl, openssl, and rustls"

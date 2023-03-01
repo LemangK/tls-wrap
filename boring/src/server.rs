@@ -1,7 +1,6 @@
 use super::util;
 use boring::ssl::{AlpnError, SslAcceptor, SslMethod, SslOptions, SslVerifyMode};
 use boring::x509::store::X509StoreBuilder;
-use boring::x509::X509Ref;
 use bytes::Bytes;
 use std::io;
 use std::pin::Pin;
@@ -185,10 +184,12 @@ impl<IO> TlsStream<IO> {
     }
 
     #[inline]
-    pub fn peer_certificates(&self, f: impl Fn(&X509Ref)) {
+    pub fn peer_certificates(&self, f: impl Fn(&[u8])) {
         if let Some(cert) = self.inner.ssl().peer_cert_chain() {
             for item in cert {
-                f(item)
+                if let Ok(pem) = item.to_pem() {
+                    f(&pem[..])
+                }
             }
         }
     }
