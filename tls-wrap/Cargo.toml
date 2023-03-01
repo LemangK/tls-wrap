@@ -1,0 +1,29 @@
+[package]
+name = "tls_wrap"
+version = "0.1.0"
+edition = "2021"
+authors = ["cuti <cuti0738@gmail.com>"]
+description = "Library written in Rust, compatible with boringssl, openssl, and rustls"
+license = "MIT"
+#documentation = "https://docs.rs/xxx"
+homepage = "https://github.com/LemangK/tls-wrap"
+repository = "https://github.com/LemangK/tls-wrap"
+rust-version = "1.60.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+
+[dependencies]
+tls_wrap_common = { version = "0.1.0", path = "../common" }
+## Boringssl
+[target.'cfg(all(not(any(target_arch = "mips", target_arch = "mips64")),any(target_os = "ios",target_os = "macos",target_os = "android",all(target_os = "windows", target_arch = "x86_64"))))'.dependencies]
+tls_wrap_boring = { path = "../boring" }
+
+## Rustls
+[target.'cfg(all(not(any(target_arch = "mips", target_arch = "mips64")),not(any(target_os = "ios",target_os = "macos",target_os = "android")),not(all(target_os = "windows", target_arch = "x86_64"))))'.dependencies]
+tls_wrap_rustls = { path = "../rustls" }
+
+## Openssl
+[target.'cfg(any(target_arch = "mips", target_arch = "mips64"))'.dependencies]
+tls_wrap_openssl = { path = "../openssl" }

@@ -1,0 +1,31 @@
+[package]
+name = "tls_wrap_rustls"
+version = "0.1.0"
+edition = "2021"
+authors = ["cuti <cuti0738@gmail.com>"]
+description = "Library written in Rust, compatible with boringssl, openssl, and rustls"
+license = "MIT"
+#documentation = "https://docs.rs/xxx"
+homepage = "https://github.com/LemangK/tls-wrap"
+repository = "https://github.com/LemangK/tls-wrap"
+rust-version = "1.60.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+default = ["rustls-webpki-roots"]
+rustls-roots = ["rustls-native-certs"]
+rustls-webpki-roots = ["webpki-roots"]
+
+[dependencies]
+bytes = "1.3.0"
+tokio = { version = "1.22.0", features = ["io-util"] }
+tracing = "0.1.37"
+cfg-if = "1.0.0"
+tls_wrap_common = { path = "../common" }
+
+tokio-rustls = { version = "0.23.4", features = ["tls12", "dangerous_configuration", "early-data"] }
+rustls = { version = "0.20.6", features = ["quic"] }
+rustls-pemfile = { version = "1.0.1" }
+rustls-native-certs = { version = "0.6.1", optional = true }
+webpki-roots = { version = "0.22.1", optional = true }

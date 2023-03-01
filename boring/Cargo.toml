@@ -1,0 +1,45 @@
+[package]
+name = "tls_wrap_boring"
+version = "0.1.0"
+edition = "2021"
+authors = ["cuti <cuti0738@gmail.com>"]
+description = "Library written in Rust, compatible with boringssl, openssl, and rustls"
+license = "MIT"
+#documentation = "https://docs.rs/xxx"
+homepage = "https://github.com/LemangK/tls-wrap"
+repository = "https://github.com/LemangK/tls-wrap"
+rust-version = "1.60.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+bytes = "1.3.0"
+tokio = { version = "1.22.0", features = ["io-util"] }
+tracing = "0.1.37"
+cfg-if = "1.0.0"
+boring = "2.1.0"
+boring-sys = "2.1.0"
+tokio-boring = "2.1.5"
+libc = "0"
+brotli-decompressor = { version = "2.3.2", default-features = false, features = ["std"] }
+foreign-types-shared = "0.3.1"
+linked_hash_set = "0.1"
+parking_lot = "0.12.1"
+once_cell = "1.17.0"
+tls_wrap_common = { path = "../common" }
+
+## Boringssl windows
+[target.'cfg(windows)'.dependencies]
+schannel = "0.1.15"
+
+## Boringssl darwin
+[target.'cfg(any(target_os = "macos", target_os = "ios"))'.dependencies]
+security-framework = "2.0.0"
+core-foundation = "0.9.3"
+security-framework-sys = { version = "2.6.0", default-features = false }
+foreign-types = "0.5"
+
+[dev-dependencies]
+tokio = { version = "1.22.0", features = ["full"] }
+hex = "0.4.3"
+assert_matches = "1.5.0"
