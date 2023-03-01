@@ -17,13 +17,13 @@ rust-version = "1.60.0"
 [dependencies]
 tls_wrap_common = { version = "0.1.0", path = "../common" }
 ## Boringssl
-[target.'cfg(all(not(any(target_arch = "mips", target_arch = "mips64")),any(target_os = "ios",target_os = "macos",target_os = "android",all(target_os = "windows", target_arch = "x86_64"))))'.dependencies]
+[target.'cfg(any(target_os = "ios",target_os = "macos",target_os = "android",all(target_os = "windows", target_arch = "x86_64"),all(target_os = "linux", target_arch = "x86_64")))'.dependencies]
 tls_wrap_boring = { path = "../boring" }
 
 ## Rustls
-[target.'cfg(all(not(any(target_arch = "mips", target_arch = "mips64")),not(any(target_os = "ios",target_os = "macos",target_os = "android")),not(all(target_os = "windows", target_arch = "x86_64"))))'.dependencies]
+[target.'cfg(any(all(target_os = "linux", target_arch = "x86"),all(target_os = "linux", target_arch = "aarch64"),all(target_os = "linux", target_arch = "arm"),all(target_os = "windows", target_arch = "aarch64"),all(target_os = "windows", target_arch = "x86")))'.dependencies]
 tls_wrap_rustls = { path = "../rustls" }
 
 ## Openssl
-[target.'cfg(any(target_arch = "mips", target_arch = "mips64"))'.dependencies]
+[target.'cfg(all(target_os = "linux", any(target_arch = "mips", target_arch = "mips64")))'.dependencies]
 tls_wrap_openssl = { path = "../openssl" }
