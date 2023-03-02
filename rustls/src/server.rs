@@ -146,7 +146,7 @@ impl<IO> TlsStream<IO> {
     }
 
     #[inline]
-    pub fn peer_certificates(&self, f: impl Fn(&[u8])) {
+    pub fn peer_certificates(&self, mut f: impl FnMut(&[u8])) {
         let (_, info) = self.inner.get_ref();
         if let Some(cert) = info.peer_certificates() {
             for item in cert {

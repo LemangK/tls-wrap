@@ -184,7 +184,7 @@ impl<IO> TlsStream<IO> {
     }
 
     #[inline]
-    pub fn peer_certificates(&self, f: impl Fn(&[u8])) {
+    pub fn peer_certificates(&self, mut f: impl FnMut(&[u8])) {
         if let Some(cert) = self.inner.ssl().peer_cert_chain() {
             for item in cert {
                 if let Ok(pem) = item.to_pem() {
