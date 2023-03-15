@@ -26,5 +26,6 @@ openssl-probe = { version = "0.1" }
 tokio-openssl = { version = "0.6" }
 
 [dev-dependencies]
+tokio = { version = "1.26.0", features = ["full"] }
 hex = "0.4.3"
 assert_matches = "1.5.0"

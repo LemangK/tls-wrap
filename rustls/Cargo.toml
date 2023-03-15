@@ -1,6 +1,6 @@
 [package]
 name = "tls_wrap_rustls"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 authors = ["cuti <cuti0738@gmail.com>"]
 description = "Library written in Rust, compatible with boringssl, openssl, and rustls"
@@ -29,3 +29,6 @@ rustls = { version = "0.20.6", features = ["quic"] }
 rustls-pemfile = { version = "1.0.1" }
 rustls-native-certs = { version = "0.6.1", optional = true }
 webpki-roots = { version = "0.22.1", optional = true }
+
+[dev-dependencies]
+tokio = { version = "1.26.0", features = ["full"] }

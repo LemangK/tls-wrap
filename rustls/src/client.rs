@@ -154,7 +154,7 @@ impl ClientBuilder<TlsClient> for TlsClientBuilder {
             tls_config.alpn_protocols = self
                 .alpn
                 .iter()
-                .map(|s| [&[s.len() as u8], s.as_bytes()].concat())
+                .map(|s| s.as_bytes().to_vec())
                 .collect::<Vec<Vec<u8>>>()
         }
 
