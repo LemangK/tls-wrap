@@ -10,7 +10,7 @@ mod tests {
 
     #[tokio::test]
     async fn test_client() {
-        let mut builder = client::TlsClientBuilder::new("www.google.com".into());
+        let mut builder = client::TlsClientBuilder::new("www.amazon.com".into());
         builder.set_load_system_ca(true);
         let client = builder.build().unwrap();
         let mut stream = tokio::net::TcpStream::connect("1.1.1.1:443").await.unwrap();
