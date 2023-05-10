@@ -1,11 +1,10 @@
 [package]
 name = "tls_wrap"
-version = "0.1.5"
+version = "0.1.6"
 edition = "2021"
 authors = ["cuti <cuti0738@gmail.com>"]
 description = "Library written in Rust, compatible with boringssl, openssl, and rustls"
 license = "MIT"
-#documentation = "https://docs.rs/xxx"
 homepage = "https://github.com/LemangK/tls-wrap"
 repository = "https://github.com/LemangK/tls-wrap"
 rust-version = "1.60.0"
@@ -19,19 +18,19 @@ tls_wrap_common = { version = "0.1.0", path = "../common" }
 
 # Boringssl
 [target.'cfg(target_os = "ios")'.dependencies]
-tls_wrap_boring = { version = "0.1.2", path = "../boring" }
+tls_wrap_boring = { version = "0.1.3", path = "../boring" }
 
 [target.'cfg(target_os = "macos")'.dependencies]
-tls_wrap_boring = { version = "0.1.2", path = "../boring" }
+tls_wrap_boring = { version = "0.1.3", path = "../boring" }
 
 [target.'cfg(target_os = "android")'.dependencies]
-tls_wrap_boring = { version = "0.1.2", path = "../boring" }
+tls_wrap_boring = { version = "0.1.3", path = "../boring" }
 
 [target.'cfg(all(target_os = "windows", target_arch = "x86_64"))'.dependencies]
-tls_wrap_boring = { version = "0.1.2", path = "../boring" }
+tls_wrap_boring = { version = "0.1.3", path = "../boring" }
 
 [target.'cfg(all(target_os = "linux", target_arch = "x86_64"))'.dependencies]
-tls_wrap_boring = { version = "0.1.2", path = "../boring" }
+tls_wrap_boring = { version = "0.1.3", path = "../boring" }
 
 # Rustls
 [target.'cfg(all(target_os = "linux", target_arch = "x86"))'.dependencies]

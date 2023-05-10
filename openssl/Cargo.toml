@@ -5,7 +5,6 @@ edition = "2021"
 authors = ["cuti <cuti0738@gmail.com>"]
 description = "Library written in Rust, compatible with boringssl, openssl, and rustls"
 license = "MIT"
-#documentation = "https://docs.rs/xxx"
 homepage = "https://github.com/LemangK/tls-wrap"
 repository = "https://github.com/LemangK/tls-wrap"
 rust-version = "1.60.0"

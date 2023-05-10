@@ -1,11 +1,10 @@
 [package]
 name = "tls_wrap_boring"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2021"
 authors = ["cuti <cuti0738@gmail.com>"]
 description = "Library written in Rust, compatible with boringssl, openssl, and rustls"
 license = "MIT"
-#documentation = "https://docs.rs/xxx"
 homepage = "https://github.com/LemangK/tls-wrap"
 repository = "https://github.com/LemangK/tls-wrap"
 rust-version = "1.60.0"
@@ -26,7 +25,7 @@ foreign-types-shared = "0.3.1"
 linked_hash_set = "0.1"
 parking_lot = "0.12.1"
 once_cell = "1.17.0"
-tls_wrap_common = "0.1.0"
+tls_wrap_common = { path = "../common" }
 
 ## Boringssl windows
 [target.'cfg(windows)'.dependencies]
